@@ -1,16 +1,46 @@
-import * as React from "react";
-interface IProps {
-  compiler: string;
-  framework: string;
-  bundler: string;
+import * as React from 'react'
+import {Fabric} from 'office-ui-fabric-react/lib/Fabric'
+import {Button, ButtonType} from 'office-ui-fabric-react/lib/Button'
+import {Dialog, DialogType, DialogFooter} from 'office-ui-fabric-react/lib/Dialog'
+
+export type IComponentProps = {
+
 }
-export class Hello extends React.Component<IProps, {}> {
+class Hello extends React.Component<IComponentProps, any> {
+  constructor(props: IComponentProps) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    }
+  }
+
+  open = () => this.setState({isOpen: true})
+
+  close = () => this.setState({isOpen: false})
+
   render() {
     return (
-      <h1>
-        Changed This is a {this.props.framework} application using {this.props.compiler}{" "}
-        with {this.props.bundler}
-      </h1>
-    );
+      <div className="App">
+        <div style={{margin: '5em'}}>
+          <Button onClick={this.open}>I am a button.</Button>
+        </div>
+        <Dialog
+          isOpen={this.state.isOpen}
+          type={DialogType.close}
+          onDismiss={this.close.bind(this)}
+          title='Dialog title'
+          subText='Dialog subText'
+          isBlocking={false}
+          closeButtonAriaLabel='Close'
+        >
+          <h1>Hello, World!</h1>
+          <DialogFooter>
+            <Button buttonType={ButtonType.primary} onClick={this.close}>OK</Button>
+          </DialogFooter>
+        </Dialog>
+      </div>  
+    )
   }
 }
+
+export default Hello;
