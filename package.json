@@ -2,6 +2,7 @@
   "name": "blog-react-sharepoint-embed",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://dudelisdev.sharepoint.com/sites/teamclassic/SiteAssets",
   "dependencies": {
     "@pnp/common": "^1.3.5",
     "@pnp/graph": "^1.3.5",
